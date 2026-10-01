@@ -5,7 +5,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-    <title>Danilo Cunha Martins | Engenheiro Mecânico</title>
+    <title>Danilo C. Martins | Engenheiro Mecânico</title>
 
     <style>
         * {
@@ -45,7 +45,7 @@
             height: 80px;
             margin: 0 auto 20px;
             border-radius: 50%;
-            background: #ffffff;
+            background: white;
             color: #111827;
             display: flex;
             align-items: center;
@@ -102,6 +102,7 @@
             color: #222;
             background: #fafafa;
             transition: 0.2s;
+            cursor: pointer;
         }
 
         .button:hover {
@@ -149,7 +150,7 @@
                 DCM
             </div>
 
-            <h1>Danilo Cunha Martins</h1>
+            <h1>Danilo C. Martins</h1>
 
             <p>Engenheiro Mecânico</p>
 
@@ -164,24 +165,40 @@
 
             <div class="buttons">
 
-                <a class="button primary" href="#">
+                <!-- Adicionar aos contatos -->
+                <a class="button primary" href="#" onclick="adicionarContato()">
                     + Adicionar aos contatos
                 </a>
 
-                <a class="button" href="#">
+                <!-- WhatsApp -->
+                <a
+                    class="button"
+                    href="https://wa.me/5531988817172?text=Ol%C3%A1%2C%20Danilo%21%20Cheguei%20atrav%C3%A9s%20da%20sua%20TAG%20digital."
+                    target="_blank">
                     WhatsApp
                 </a>
 
-                <a class="button" href="#">
+                <!-- E-mail -->
+                <a
+                    class="button"
+                    href="mailto:Danilo@Techna3D.com.br">
                     E-mail
                 </a>
 
-                <a class="button" href="#">
+                <!-- LinkedIn -->
+                <a
+                    class="button"
+                    href="https://www.linkedin.com/in/dcmartins/"
+                    target="_blank">
                     LinkedIn
                 </a>
 
-                <a class="button" href="#">
-                    Techna 3D
+                <!-- Instagram -->
+                <a
+                    class="button"
+                    href="https://www.instagram.com/Techna3D/"
+                    target="_blank">
+                    Instagram
                 </a>
 
             </div>
@@ -193,6 +210,44 @@
         </div>
 
     </div>
+
+
+    <script>
+
+        function adicionarContato() {
+
+            const vcard =
+`BEGIN:VCARD
+VERSION:3.0
+FN:Danilo Martins Techna 3D
+N:Techna3D;Danilo Martins;;;
+ORG:Techna 3D Engenharia
+TITLE:Engenheiro Mecânico
+TEL;TYPE=CELL:+5531988817172
+EMAIL;TYPE=WORK:Danilo@Techna3D.com.br
+URL:https://www.linkedin.com/in/dcmartins/
+URL:https://www.instagram.com/Techna3D/
+END:VCARD`;
+
+            const blob = new Blob(
+                [vcard],
+                { type: "text/vcard;charset=utf-8" }
+            );
+
+            const url = URL.createObjectURL(blob);
+
+            const link = document.createElement("a");
+            link.href = url;
+            link.download = "Danilo_Martins_Techna3D.vcf";
+
+            document.body.appendChild(link);
+            link.click();
+            document.body.removeChild(link);
+
+            URL.revokeObjectURL(url);
+        }
+
+    </script>
 
 </body>
 
